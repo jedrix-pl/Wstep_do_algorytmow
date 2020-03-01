@@ -1,1 +1,0 @@
-![image](/home/jedrix/PycharmProjects/Wstep_do_algorytmow/L1_macierze_tablice_wielowymiarowe/WdA Lista 01-1.png)
