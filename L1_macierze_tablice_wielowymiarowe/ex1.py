@@ -84,20 +84,20 @@ def show_students_above_4(grades):
         if stud_avg >= 4:
             print(f"Student{index+1} got average not less than 4.0!")
 
+if __name__ == '__main__':
 
+    GRADES = gen_grades()
+    print(f"GRADES^T:\n{GRADES.transpose()}\n")
 
-GRADES = gen_grades()
-print(f"GRADES^T:\n{GRADES.transpose()}\n")
+    fail_count(GRADES)
 
-fail_count(GRADES)
+    show_min_max_avg(GRADES)
 
-show_min_max_avg(GRADES)
+    print(f"The best grade is {np.amax(GRADES)}\n")
 
-print(f"The best grade is {np.amax(GRADES)}\n")
+    best_stud(GRADES)
 
-best_stud(GRADES)
+    visual_grades(GRADES)
 
-visual_grades(GRADES)
-
-print("\n")
-show_students_above_4(GRADES)
+    print("\n")
+    show_students_above_4(GRADES)
