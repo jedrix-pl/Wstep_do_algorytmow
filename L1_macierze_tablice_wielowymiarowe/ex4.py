@@ -4,12 +4,12 @@ from termcolor import colored
 
 
 def check_data(pandasDataFrame1, pandasDataFrame2):
-    correctList = []
+    correctList1 = []
     for row in range(len(pandasDataFrame1.values)):
         if str(pandasDataFrame1['Item no.'][row]) in pandasDataFrame2['Item no.'].values:
-            correctList.append(1)
+            correctList1.append(1)
 
-    if sum(correctList) == len(receipt_data):
+    if sum(correctList1) == len(receipt_data):
         msg = "\n\tData is CORRECT\n"
         print(colored(msg, 'green'))
         return True
@@ -27,35 +27,30 @@ def total_price(pandasReceipt, pandasItemsInfo):
         single_price = float(pandasItemsInfo[pandasItemsInfo['Item no.'] == str(item_no)]['Price'].values)
         price = single_price * quant
         total_price += price
-        print(f"""
-ITEM No: {item_no}
-QUANT: {quant}
-SINGLE PRICE: {single_price}
-PRICE: {price}
-==================""")
 
     print("\n\tTOTAL PRICE:", total_price)
 
 
-receipt_data = np.array([[101, 1001, 3],
-                        [101, 22, 2],
-                        [101, 2292, 5],
-                        [101, 1921, 2]])
+if __name__ == '__main__':
+    receipt_data = np.array([[101, 1001, 3],
+                            [101, 22, 2],
+                            [101, 2292, 5],
+                            [101, 1921, 2]])
 
-receipt_col_names = ['Client no.', 'Item no.', 'pieces/weight']
+    receipt_col_names = ['Client no.', 'Item no.', 'pieces/weight']
 
-RECEIPT = pd.DataFrame(receipt_data, columns=receipt_col_names)
-
-
-items_info_data = np.array([['potatoe', 1921, 1.50, 'kg'],
-                            ['nutella', 2292, 9.50, 'pieces'],
-                            ['book', 1001, 15.00, 'pieces'],
-                            ['apple', 22, 3.00, 'kg']])
-
-items_info_data_col_names = ['Item', 'Item no.', 'Price', 'Measure']
-
-ITEMS_INFO = pd.DataFrame(items_info_data, columns=items_info_data_col_names)
+    RECEIPT = pd.DataFrame(receipt_data, columns=receipt_col_names)
 
 
-if check_data(RECEIPT, ITEMS_INFO):
-    total_price(RECEIPT, ITEMS_INFO)
+    items_info_data = np.array([['potatoe', 1921, 1.50, 'kg'],
+                                ['nutella', 2292, 9.50, 'pieces'],
+                                ['book', 1001, 15.00, 'pieces'],
+                                ['apple', 22, 3.00, 'kg']])
+
+    items_info_data_col_names = ['Item', 'Item no.', 'Price', 'Measure']
+
+    ITEMS_INFO = pd.DataFrame(items_info_data, columns=items_info_data_col_names)
+
+
+    if check_data(RECEIPT, ITEMS_INFO):
+        total_price(RECEIPT, ITEMS_INFO)

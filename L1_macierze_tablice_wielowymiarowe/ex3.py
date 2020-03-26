@@ -1,4 +1,4 @@
-import numpy as np
+from ex1 import gen_grades
 
 
 def gauss_elimination(MATRIX):
@@ -18,11 +18,8 @@ def gauss_elimination(MATRIX):
     return MATRIX
 
 
-matrix = np.array([[3, -2, 5, 0],
-                  [0, 5, 8, 1],
-                  [1, 0, 2, 1],
-                  [0, 7, 6, 1]], float)
+if __name__ == '__main__':
+    matrix = gen_grades(min=0, max=9)
 
-
-print(matrix, "\n\n")
-print(gauss_elimination(matrix))
+    print(matrix, "\n\n")
+    print(gauss_elimination(matrix))
